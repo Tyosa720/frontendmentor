@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Interactive card details form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+        /*
+      1. Use a more-intuitive box-sizing model.
+    */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    /*
+      2. Remove default margin
+    */
+    * {
+      margin: 0;
+    }
+    /*
+      Typographic tweaks!
+      3. Add accessible line-height
+      4. Improve text rendering
+    */
+    body {
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    /*
+      5. Improve media defaults
+    */
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+    /*
+      6. Remove built-in form typography styles
+    */
+    input, button, textarea, select {
+      font: inherit;
+    }
+    /*
+      7. Avoid text overflows
+    */
+    p, h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+    }
+    /*
+      8. Create a root stacking context
+    */
+    #root, #__next {
+      isolation: isolate;
+    }
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+
+
+
+    /*my css */
+
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+    :root {
+      --Light-grayish-violet: hsl(270, 3%, 87%);
+      --Dark-grayish-violet: hsl(279, 6%, 55%);
+      --Very-dark-violet: hsl(278, 68%, 11%);
+    }
+
+    body{
+      height: 100vh;
+      width: 100vw;
+    }
+    .bg-main-desktop{
+      position: fixed;
+      z-index: -1;
+      height: 100%;
+    }
+    .card{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      min-width: 667px;
+    }
+    .face-card{
+      color: white;
+      background-image: url("/interactive-card-details-form-main/images/bg-card-front.png");
+      background-repeat: no-repeat;
+      height: 245px;
+      margin-left: 125px;
+      max-width: 447px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+    }
+    .face-card .circle{
+      height: 100%;
+      width: 100%;
+      padding-top: 25px;
+      padding-left: 25px;
+    }
+    .face-card h1{
+      display: flex;
+      justify-content: space-around;
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: 3px;
+      font-weight: normal;
+    }
+    .face-card .name-year{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      margin-left: 35px;
+      margin-right: 20px;
+      font-size: 14px;
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .back-card{
+      height: 245px;
+      background-image: url("/interactive-card-details-form-main/images/bg-card-back.png");
+      background-repeat: no-repeat;
+      margin-left: 220px;
+      margin-top: 30px;
+      display: flex;
+      justify-content: end;
+      max-width: 447px;
+    }
+    .back-card p{
+      margin-right: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      letter-spacing: 3px;
+      color: white;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+    .container-flex{
+      display: flex;
+      height: 100%;
+    }
+    .form-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100vw;
+    }
+    .form{
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      margin-left: 25px;
+    }
+    .form-row-flex{
+      display: flex;
+    }
+
+    .form input,label{
+      margin: 8px;
+    }
+    .form .cvc{
+      width: 13.6rem;
+    }
+    .form .date{
+      max-width: 4rem;
+    }
+    .form input{
+      padding: 0.5rem;
+      border: 1px solid var(--Light-grayish-violet);
+      border-radius: 5px;
+    }
+    .form .text{
+      width: 24.5rem;
+    }
+    .confirm{
+      width: 24.5rem;
+      padding: 0.5rem;
+      margin: 8px;
+      border-radius: 5px;
+      border: none;
+      background-color: var(--Very-dark-violet);
+      color: white;
+    }
+    .center{
+      display: flex;
+      justify-content: center;
+    }
+    .completed{
+      display: none;
+      text-align: center;
+    }
+    .completed h1{
+      margin-top: 2rem;
+    }
+    .svg-complet{
+      display: flex;
+      justify-content: center;
+    }
+    .continue{
+      width: 24.5rem;
+      padding: 0.5rem;
+      margin: 8px;
+      border-radius: 5px;
+      border: none;
+      background-color: var(--Very-dark-violet);
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <img class="bg-main-desktop" src="/interactive-card-details-form-main/images/bg-main-desktop.png" alt="">
+  <div class="container-flex">
+    <div class="card-container">
+      <div class="card">
+        <div class="face-card">
+          <svg class="circle" width="84" height="47" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="23.478" cy="23.5" rx="23.478" ry="23.5" fill="#fff"/><path d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z" stroke="#fff"/></svg>
+          <h1>
+            0000 0000 0000 0000
+          </h1>
+          <div class="name-year">
+            <p>
+              Jane Appleseed
+            </p>
+            <p>
+              00/00
+            </p>
+          </div>
+        </div>
+        <div class="back-card">
+          <p>
+            000
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="formContainer" class="form-container">
+      <div class="center">
+        <form id="form" class="form" action="" method="post">
+          <label for="name">Cardholder Name</label> <br>
+          <input class="text" type="text" id="name" name="name" placeholder="e.g. Jane Appleseed"> <br>
+          <label for="cardnumber">Card Number</label> <br>
+          <input class="text" id="cardnumber" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="e.g. 1234 5678 9123 0000"> <br>
+          <div class="form-row-flex">
+            <div>
+              <label for="exp-date">Exp. Date (MM/YY)</label><br>
+              <input class="date" id="exp-date-month" type="tel" pattern="[0-9]*" maxlength="2" placeholder="MM">
+              /
+              <input class="date" type="tel" id="exp-date-year" pattern="[0-9]*" maxlength="2" placeholder="YY">
+            </div>
+            <div>
+              <label for="CVC">CVC</label> <br>
+              <input class="cvc" type="text" placeholder="e.g. 123">
+            </div>
+          </div>
+          <button id="confirm" class="confirm" type="button">Confirm</button>
+        </form>
+        <div id="completed" class="completed">
+          <div class="svg-complet">
+            <svg class="completed-icon" width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="40" fill="url(#a)"/><path d="M28 39.92 36.08 48l16-16" stroke="#fff" stroke-width="3"/><defs><linearGradient id="a" x1="-23.014" y1="11.507" x2="0" y2="91.507" gradientUnits="userSpaceOnUse"><stop stop-color="#6348FE"/><stop offset="1" stop-color="#610595"/></linearGradient></defs></svg>
+          </div>
+          <h1>
+            Thank you!
+          </h1>
+          <p>
+            We've added your card details
+          </p>
+          <button class="continue">
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+
+
+// Récupérer les éléments du DOM
+var form = document.getElementById('form');
+var confirmButton = document.getElementById('confirm');
+var completed = document.getElementById('completed');
+
+// Fonction pour afficher l'image et masquer le formulaire
+function showCompletedImage() {
+  form.style.display = 'none';
+  completed.style.display = 'block';
+  console.log("mllll")
+}
+
+// Ajouter un gestionnaire d'événement au clic du bouton
+confirmButton.addEventListener('click', showCompletedImage);
+</script>
+</html>
